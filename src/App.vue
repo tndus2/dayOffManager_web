@@ -1,55 +1,44 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <div>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+<!-- header -->
+    <Header v-if="$route.name !== 'Login'"></Header>
 
-      <v-spacer></v-spacer>
+<!-- nav -->
+    <!-- <Nav></Nav> -->
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+<!-- <router-view/> : router/index.js 파일로 이동 -->
+    <router-view/>
 
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-app>
+<!-- footer -->
+    <Footer v-if="$route.name !== 'Login'"></Footer>
+
+  </div>
 </template>
 
 <script>
+// '@' 는 src를 가르킴
+import Header from '@/layout/Header.vue';
+//import Nav from '@/layout/Nav.vue';
+import Footer from '@/layout/Footer.vue';
 
 export default {
   name: 'App',
+  components: {
+    Header,
+    //Nav,
+    Footer
+  }
+}
 
-  data: () => ({
-    //
-  }),
-};
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>

@@ -1,27 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+//import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
+
+/* Vue router
+   SPA(single page application) 웹페이지의 전환을 지원하는 라이브러리
+   페이지 변경시 DOM을 새로 갱신하지 않고 
+   요청한 컴포넌트만 갱신
+*/
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Login',
+    component: () => import('../views/Login.vue')
   },
+/* 로그인 페이지 */  
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/Login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+/* 대시보드 페이지 */  
+  {
+    path: '/DashBoard',
+    name: 'DashBoard',
+    component: () => import('../views/DashBoard.vue')
   }
 ]
 
+/* router 인스턴스 생성 */
 const router = new VueRouter({
-  mode: 'history',
+  path: '/',
+  mode: 'history', // 브라우저 히스토리 스택에 기록
   base: process.env.BASE_URL,
   routes
 })
