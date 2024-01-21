@@ -1,12 +1,37 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+  <div>
+
+<!-- header -->
+    <Header v-if="$route.name !== 'Login'"></Header>
+
+<!-- nav -->
+    <!-- <Nav></Nav> -->
+
+<!-- <router-view/> : router/index.js 파일로 이동 -->
     <router-view/>
+
+<!-- footer -->
+    <Footer v-if="$route.name !== 'Login'"></Footer>
+
   </div>
 </template>
+
+<script>
+// '@' 는 src를 가르킴
+import Header from '@/layout/Header.vue';
+//import Nav from '@/layout/Nav.vue';
+import Footer from '@/layout/Footer.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    //Nav,
+    Footer
+  }
+}
+
+</script>
 
 <style>
 #app {
@@ -15,18 +40,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
